@@ -109,6 +109,10 @@ public static class JPanelTest extends JFrame {
 								SysClass.printLog("学生登录。");
 								new SysStudent.JPanelSysSud();
 							}
+							else if(loginBack.indexOf("教师") >= 0) {
+								SysClass.printLog("教师登录。");
+								SysTeacher.JPanelSysTec jp = new SysTeacher.JPanelSysTec();
+							}
 							else {
 								SysClass.printErr("用户类型验证错误！");
 							}

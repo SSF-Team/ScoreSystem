@@ -4,14 +4,14 @@ import java.sql.*;
 
 public class Login {
 	public static String getPassport(String name, String password) throws SQLException {
-		SysClass.printLog("ï¿½ï¿½Ê¼ï¿½ï¿½Ö¤ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½");
+		SysClass.printLog("¿ªÊ¼ÑéÖ¤µÇÂ¼¡­¡­");
 		Connection conn = getDataBase();
 		if(conn != null) {
-			SysClass.printLog("ï¿½ï¿½ï¿½İ¿ï¿½ï¿½ï¿½ï¿½Ó³É¹ï¿½ï¿½ï¿½");
+			SysClass.printLog("Êı¾İ¿âÁ¬½Ó³É¹¦¡£");
 			SysClass.SysData.conn = conn;
 			Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery("SELECT uid,uname,upassword,authority FROM User;");
-            SysClass.printLog("ï¿½ï¿½ï¿½Ïµï¿½Â¼ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½İ£ï¿½");
+            SysClass.printLog("·ûºÏµÇÂ¼µÄÓÃ»§Êı¾İ£º");
             boolean hasUser = false;
             while(rs.next()) {
             	int uid = rs.getInt("uid");
@@ -19,37 +19,36 @@ public class Login {
             	String upassword = rs.getString("upassword");
             	String authority = rs.getString("authority");
             	
-            	// ï¿½ï¿½Ö¤ï¿½ï¿½Â¼
+            	// ÑéÖ¤µÇÂ¼
             	if(rs.getString("uname").equals(name)) {
             		System.out.println(">> " + uid + " - " + uname + " - " + upassword);
             		hasUser = true;
             		if(rs.getString("upassword").equals(password)) {
-            			SysClass.printLog("ï¿½ï¿½Ö¤ï¿½ï¿½É£ï¿½");
+            			SysClass.printLog("ÑéÖ¤Íê³É£º");
             			SysClass.SysData.uid = uid;
             			SysClass.SysData.uname = uname;
             			return "OK - 200 - " + authority;
             		}
             		else {
-            			SysClass.printErr("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
-            			SysClass.printLog("ï¿½ï¿½Ö¤ï¿½ï¿½É£ï¿½");
-                    	return "Err - ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
+            			SysClass.printErr("ÃÜÂë´íÎó£¡");
+            			SysClass.printLog("ÑéÖ¤Íê³É£º");
+                    	return "Err - ÃÜÂë´íÎó";
             		}
             	}
             }
             if(!hasUser) {
-            	SysClass.printErr("ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú£ï¿½");
-            	SysClass.printLog("ï¿½ï¿½Ö¤ï¿½ï¿½É£ï¿½");
-            	return "Err - ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½";
+            	SysClass.printErr("ÓÃ»§²»´æÔÚ£¡");
+            	SysClass.printLog("ÑéÖ¤Íê³É£º");
+            	return "Err - ÓÃ»§²»´æÔÚ";
             }
 		}
-		SysClass.printLog("ï¿½ï¿½Ö¤ï¿½ï¿½É£ï¿½");
+		SysClass.printLog("ÑéÖ¤Íê³É£º");
 		return "Err - None";
 	}
 	
-	// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ¿ï¿½
+	// Á¬½ÓÊı¾İ¿â
 	private static Connection getDataBase()
 	{
-		return DBUtil.createConnection("jdbc:mysql://SQL Infoï¼ˆSQL åœ°å€ï¼‰"+
-                "characterEncoding=utf8&useUnicode=true&useSSL=false");
+		return DBUtil.createConnection(SysClass.SysData.mainurl + "test" + SysClass.SysData.mainurladd);
 	}
 }

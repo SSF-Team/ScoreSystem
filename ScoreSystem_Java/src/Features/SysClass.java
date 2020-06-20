@@ -10,6 +10,12 @@ public class SysClass {
 		public static int uid ;
 		public static String uname;
 		public static Connection conn;
+		public static String mainurladd= "?characterEncoding=utf8&useUnicode=true&useSSL=false";
+		
+		// SQL 服务器信息
+		public static String mainurl = "jdbc:mysql://localhost:3306/";
+		public static String SQLUser = "root";
+		public static String SQLPassword = "Admin";
 	}
 	
 	public static void printLog(String log) {

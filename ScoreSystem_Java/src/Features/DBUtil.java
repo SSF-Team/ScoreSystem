@@ -23,7 +23,7 @@ public class DBUtil {
     	String URL = url;
         try {
             Class.forName(driver);
-            return DriverManager.getConnection(URL, "SQL Info（账户）", "SQL Info（密码）");
+            return DriverManager.getConnection(URL, SysClass.SysData.SQLUser, SysClass.SysData.SQLPassword);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();

@@ -1,10 +1,10 @@
 /*******************************************************************/
-/*    â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ â•—â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ â•— â–ˆâ–ˆâ–ˆâ–ˆâ–ˆ â•—   â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ â•—      â–ˆâ–ˆ  â•—   â–ˆâ–ˆ  â•—      */
-/*    â–ˆâ–ˆ â•”â•â•â•â•â•â•â• â•šâ•â•â•â•â–ˆâ–ˆ â•”â•â•â•â•â•â–ˆâ–ˆ â•”â•â•â–ˆâ–ˆ â•— â–ˆâ–ˆ â•”â•â•â•â•â•â–ˆâ–ˆ â•— â•š â–ˆâ–ˆ â•— â–ˆâ–ˆ â•”  â•     */
-/*    â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ â•—         â–ˆâ–ˆ â•‘        â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ â•‘ â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ â•” â•       â•š â–ˆâ–ˆâ–ˆ â•” â•         */
-/*    â•šâ•â•â•â•â•â•â–ˆâ–ˆ â•‘         â–ˆâ–ˆ â•‘        â–ˆâ–ˆ â•”â•â•â–ˆâ–ˆ â•‘ â–ˆâ–ˆ â•”â•â•â•â•â•â•â•          â–ˆâ–ˆ â•” â–ˆâ–ˆ â•—        */
-/*    â–ˆâ–ˆâ–ˆâ–ˆâ–ˆâ–ˆ â•‘         â–ˆâ–ˆ â•‘        â–ˆâ–ˆ â•‘   â–ˆâ–ˆ â•‘ â–ˆâ–ˆ â•‘                    â–ˆâ–ˆ â•” â• â–ˆâ–ˆ â•—       */
-/*    â•šâ•â•â•â•â•â•â•â•â•â•â•           â•šâ•â•â•          â•šâ•â•â•     â•šâ•â•â•   â•šâ•â•â•                      â•šâ•â•â•      â•šâ•â•â•       */
+/*    ¨€¨€¨€¨€¨€¨€ ¨[¨€¨€¨€¨€¨€¨€¨€¨€ ¨[ ¨€¨€¨€¨€¨€ ¨[   ¨€¨€¨€¨€¨€¨€ ¨[      ¨€¨€  ¨[   ¨€¨€  ¨[      */
+/*    ¨€¨€ ¨X¨T¨T¨T¨T¨T¨T¨a ¨^¨T¨T¨T¨T¨€¨€ ¨X¨T¨T¨T¨T¨a¨€¨€ ¨X¨T¨T¨€¨€ ¨[ ¨€¨€ ¨X¨T¨T¨T¨T¨T¨€¨€ ¨[ ¨^ ¨€¨€ ¨[ ¨€¨€ ¨X  ¨a     */
+/*    ¨€¨€¨€¨€¨€¨€ ¨[         ¨€¨€ ¨U        ¨€¨€¨€¨€¨€¨€ ¨U ¨€¨€¨€¨€¨€¨€ ¨X ¨a       ¨^ ¨€¨€¨€ ¨X ¨a         */
+/*    ¨^¨T¨T¨T¨T¨T¨T¨€¨€ ¨U         ¨€¨€ ¨U        ¨€¨€ ¨X¨T¨T¨€¨€ ¨U ¨€¨€ ¨X¨T¨T¨T¨T¨T¨T¨a          ¨€¨€ ¨X ¨€¨€ ¨[        */
+/*    ¨€¨€¨€¨€¨€¨€ ¨U         ¨€¨€ ¨U        ¨€¨€ ¨U   ¨€¨€ ¨U ¨€¨€ ¨U                    ¨€¨€ ¨X ¨a ¨€¨€ ¨[       */
+/*    ¨^¨T¨T¨T¨T¨T¨T¨T¨T¨T¨T¨a           ¨^¨T¨T¨a          ¨^¨T¨T¨a     ¨^¨T¨T¨a   ¨^¨T¨T¨a                      ¨^¨T¨T¨a      ¨^¨T¨T¨a       */
 /*******************************************************************/
 
 package SysUI;
@@ -12,28 +12,25 @@ package SysUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import Features.DBUtil;
-import Features.Login;
 import Features.SysClass;
 
 
-public class SysStudent {
-	public static class JPanelSysSud extends JFrame {
+public class SysTeacher {
+	public static class JPanelSysTec extends JFrame {
 		 
 		private static final long serialVersionUID = -6740703588976621222L;
 	 
-		public JPanelSysSud() {
-			super("å­¦ç”Ÿ - å­¦ç”Ÿç®¡ç†ç³»ç»Ÿ");
+		public JPanelSysTec() {
+			super("½ÌÊ¦ - Ñ§Éú¹ÜÀíÏµÍ³");
 			Container c = this.getContentPane();
 	 
 			c.add(getMain());
@@ -52,17 +49,17 @@ public class SysStudent {
 		JPanel jPC = new JPanel();
 	 
 		public JPanel getMain() {
-			SysClass.printLog("è½½å…¥å­¦ç”Ÿç®¡ç†ç•Œé¢ã€‚");
+			SysClass.printLog("ÔØÈë½ÌÊ¦¹ÜÀí½çÃæ¡£");
 			JPanel jP = new JPanel();
 			jP.setOpaque(false);
-			jP.setLayout(null);									// è®¾ç½®ç©ºå¸ƒå±€ï¼Œå³ç»å¯¹å¸ƒå±€
+			jP.setLayout(null);									// ÉèÖÃ¿Õ²¼¾Ö£¬¼´¾ø¶Ô²¼¾Ö
 			
-			JLabel title=new JLabel("å­¦ç”Ÿç®¡ç†");
+			JLabel title=new JLabel("½ÌÊ¦¹ÜÀí");
 			title.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 17));
 			title.setBounds(70,-5, 150,50);	
 			jP.add(title);
 			
-			// å¡ç‰‡æ¡†æ¶
+			// ¿¨Æ¬¿ò¼Ü
 			jPC.setOpaque(false);
 			jPC.setLayout(null);
 			jPC = new JPanel(pageCard);
@@ -72,146 +69,146 @@ public class SysStudent {
 			/*******************************************************************/
 			
 			/*
-			 * è¿™æ˜¯ä¸‰ä¸ªå·¦ä¾§åˆ—è¡¨æŒ‰é’®ï¼ˆ
-			 * å› ä¸ºæŒ‰é’®è‡ªå®šä¹‰æ ·å¼å®¹æ˜“ä¸€ç‚¹
-			 * æ‰€ä»¥æ²¡ç”¨JList
+			 * ÕâÊÇÈı¸ö×ó²àÁĞ±í°´Å¥£¨
+			 * ÒòÎª°´Å¥×Ô¶¨ÒåÑùÊ½ÈİÒ×Ò»µã
+			 * ËùÒÔÃ»ÓÃJList
 			 */
-			JButton jbInfo = new JButton("     åŸºç¡€ä¿¡æ¯");
-			JButton jbScore = new JButton("     æˆç»©ä¿¡æ¯");
-			JButton jbTable = new JButton("     æäº¤å·¥å•");
-			JButton jbExit = new JButton("     é€€å‡ºç™»å½•");
+			JButton jbInfo = new JButton("     »ù´¡ĞÅÏ¢");
+			JButton jbStudent = new JButton("     Ñ§Éú¹ÜÀí");
+			JButton jbScore = new JButton("     ³É¼¨¹ÜÀí");
+			JButton jbExit = new JButton("     ÍË³öµÇÂ¼");
 			
-			jbInfo.setBounds(0,55, 230,35);	   // è®¾ç½®ä½ç½®åŠå¤§å°
+			jbInfo.setBounds(0,55, 230,35);	   // ÉèÖÃÎ»ÖÃ¼°´óĞ¡
 			jbInfo.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 15));
 			jbInfo.setHorizontalAlignment(SwingConstants.LEFT);
 			jbInfo.setBackground(Color.decode("#222222"));
-			jbInfo.setContentAreaFilled(false); 	 // å»é™¤èƒŒæ™¯
-			jbInfo.setFocusPainted(false);			// å»é™¤ç„¦ç‚¹æ¡†
-			jbInfo.setBorderPainted(false);			// å»é™¤è¾¹æ¡†
+			jbInfo.setContentAreaFilled(false); 	 // È¥³ı±³¾°
+			jbInfo.setFocusPainted(false);			// È¥³ı½¹µã¿ò
+			jbInfo.setBorderPainted(false);			// È¥³ı±ß¿ò
 			jP.add(jbInfo);
 			
 			jbInfo.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					if(e.getSource()==jbInfo) {
-						// æ˜¾ç¤º
+						// ÏÔÊ¾
 						jbInfo.setBackground(Color.decode("#4285f4"));
 						jbInfo.setForeground(Color.white);
 						jbInfo.setContentAreaFilled(true);
-						// å»é™¤
+						// È¥³ı
 						jbScore.setBackground(Color.decode("#222222"));
 						jbScore.setForeground(Color.black);
 						jbScore.setContentAreaFilled(false);
 						jbExit.setBackground(Color.decode("#222222"));
 						jbExit.setForeground(Color.black);
 						jbExit.setContentAreaFilled(false);
-						jbTable.setBackground(Color.decode("#222222"));
-						jbTable.setForeground(Color.black);
-						jbTable.setContentAreaFilled(false);
-						// åŠŸèƒ½
-						SysClass.printLog("åŸºç¡€ä¿¡æ¯è¢«æŒ‰ä¸‹ï¼");
+						jbStudent.setBackground(Color.decode("#222222"));
+						jbStudent.setForeground(Color.black);
+						jbStudent.setContentAreaFilled(false);
+						// ¹¦ÄÜ
+						SysClass.printLog("»ù´¡ĞÅÏ¢±»°´ÏÂ£¡");
 						pageCard.show(jPC, "info");
 					}
 				}
 			});
 			
-			jbScore.setBounds(0,90, 230,35);	   // è®¾ç½®ä½ç½®åŠå¤§å°
+			jbStudent.setBounds(0,90, 230,35);	   // ÉèÖÃÎ»ÖÃ¼°´óĞ¡
+			jbStudent.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 15));
+			jbStudent.setHorizontalAlignment(SwingConstants.LEFT);
+			jbStudent.setBackground(Color.decode("#222222"));
+			jbStudent.setContentAreaFilled(false); 	 // È¥³ı±³¾°
+			jbStudent.setFocusPainted(false);			// È¥³ı½¹µã¿ò
+			jbStudent.setBorderPainted(false);			// È¥³ı±ß¿ò
+			jP.add(jbStudent);
+			
+			jbStudent.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if(e.getSource()==jbStudent) {
+						// ÏÔÊ¾
+						jbStudent.setBackground(Color.decode("#4285f4"));
+						jbStudent.setForeground(Color.white);
+						jbStudent.setContentAreaFilled(true);
+						// È¥³ı
+						jbScore.setBackground(Color.decode("#222222"));
+						jbScore.setForeground(Color.black);
+						jbScore.setContentAreaFilled(false);
+						jbExit.setBackground(Color.decode("#222222"));
+						jbExit.setForeground(Color.black);
+						jbExit.setContentAreaFilled(false);
+						jbInfo.setBackground(Color.decode("#222222"));
+						jbInfo.setForeground(Color.black);
+						jbInfo.setContentAreaFilled(false);
+						// ¹¦ÄÜ
+						SysClass.printLog("»ù´¡ĞÅÏ¢±»°´ÏÂ£¡");
+						pageCard.show(jPC, "info");
+					}
+				}
+			});
+			
+			jbScore.setBounds(0,125, 230,35);	   // ÉèÖÃÎ»ÖÃ¼°´óĞ¡
 			jbScore.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 15));
 			jbScore.setHorizontalAlignment(SwingConstants.LEFT);
 			jbScore.setBackground(Color.decode("#222222"));
-			jbScore.setContentAreaFilled(false); 	 // å»é™¤èƒŒæ™¯
-			jbScore.setFocusPainted(false);			// å»é™¤ç„¦ç‚¹æ¡†
-			jbScore.setBorderPainted(false);			// å»é™¤è¾¹æ¡†
+			jbScore.setContentAreaFilled(false); 	 // È¥³ı±³¾°
+			jbScore.setFocusPainted(false);			// È¥³ı½¹µã¿ò
+			jbScore.setBorderPainted(false);			// È¥³ı±ß¿ò
 			jP.add(jbScore);
 			
 			jbScore.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					if(e.getSource()==jbScore) {
-						// æ˜¾ç¤º
+						// ÏÔÊ¾
 						jbScore.setBackground(Color.decode("#4285f4"));
 						jbScore.setForeground(Color.white);
 						jbScore.setContentAreaFilled(true);
-						// å»é™¤
+						// È¥³ı
 						jbInfo.setBackground(Color.decode("#222222"));
 						jbInfo.setForeground(Color.black);
 						jbInfo.setContentAreaFilled(false);
 						jbExit.setBackground(Color.decode("#222222"));
 						jbExit.setForeground(Color.black);
 						jbExit.setContentAreaFilled(false);
-						jbTable.setBackground(Color.decode("#222222"));
-						jbTable.setForeground(Color.black);
-						jbTable.setContentAreaFilled(false);
-						// åŠŸèƒ½
-						SysClass.printLog("æˆç»©ä¿¡æ¯è¢«æŒ‰ä¸‹ï¼");
+						jbStudent.setBackground(Color.decode("#222222"));
+						jbStudent.setForeground(Color.black);
+						jbStudent.setContentAreaFilled(false);
+						// ¹¦ÄÜ
+						SysClass.printLog("³É¼¨ĞÅÏ¢±»°´ÏÂ£¡");
 						pageCard.show(jPC, "score");
 					}
 				}
 			});
 			
-			jbTable.setBounds(0,125, 230,35);	   // è®¾ç½®ä½ç½®åŠå¤§å°
-			jbTable.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 15));
-			jbTable.setHorizontalAlignment(SwingConstants.LEFT);
-			jbTable.setBackground(Color.decode("#222222"));
-			jbTable.setContentAreaFilled(false); 	 // å»é™¤èƒŒæ™¯
-			jbTable.setFocusPainted(false);			// å»é™¤ç„¦ç‚¹æ¡†
-			jbTable.setBorderPainted(false);			// å»é™¤è¾¹æ¡†
-			jP.add(jbTable);
-			
-			jbTable.addActionListener(new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					if(e.getSource()==jbTable) {
-						// æ˜¾ç¤º
-						jbTable.setBackground(Color.decode("#4285f4"));
-						jbTable.setForeground(Color.white);
-						jbTable.setContentAreaFilled(true);
-						// å»é™¤
-						jbInfo.setBackground(Color.decode("#222222"));
-						jbInfo.setForeground(Color.black);
-						jbInfo.setContentAreaFilled(false);
-						jbExit.setBackground(Color.decode("#222222"));
-						jbExit.setForeground(Color.black);
-						jbExit.setContentAreaFilled(false);
-						jbScore.setBackground(Color.decode("#222222"));
-						jbScore.setForeground(Color.black);
-						jbScore.setContentAreaFilled(false);
-						// åŠŸèƒ½
-						SysClass.printLog("æäº¤å·¥å•è¢«æŒ‰ä¸‹ï¼");
-						pageCard.show(jPC, "table");
-					}
-				}
-			});
-			
-			jbExit.setBounds(0,160, 230,35);	   // è®¾ç½®ä½ç½®åŠå¤§å°
+			jbExit.setBounds(0,160, 230,35);	   // ÉèÖÃÎ»ÖÃ¼°´óĞ¡
 			jbExit.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 15));
 			jbExit.setHorizontalAlignment(SwingConstants.LEFT);
 			jbExit.setBackground(Color.decode("#222222"));
-			jbExit.setContentAreaFilled(false); 	 // å»é™¤èƒŒæ™¯
-			jbExit.setFocusPainted(false);			// å»é™¤ç„¦ç‚¹æ¡†
-			jbExit.setBorderPainted(false);			// å»é™¤è¾¹æ¡†
+			jbExit.setContentAreaFilled(false); 	 // È¥³ı±³¾°
+			jbExit.setFocusPainted(false);			// È¥³ı½¹µã¿ò
+			jbExit.setBorderPainted(false);			// È¥³ı±ß¿ò
 			jP.add(jbExit);
 			
 			jbExit.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					if(e.getSource()==jbExit) {
-						// æ˜¾ç¤º
+						// ÏÔÊ¾
 						jbExit.setBackground(Color.decode("#4285f4"));
 						jbExit.setForeground(Color.white);
 						jbExit.setContentAreaFilled(true);
-						// å»é™¤
+						// È¥³ı
 						jbInfo.setBackground(Color.decode("#222222"));
 						jbInfo.setForeground(Color.black);
 						jbInfo.setContentAreaFilled(false);
 						jbScore.setBackground(Color.decode("#222222"));
 						jbScore.setForeground(Color.black);
 						jbScore.setContentAreaFilled(false);
-						jbTable.setBackground(Color.decode("#222222"));
-						jbTable.setForeground(Color.black);
-						jbTable.setContentAreaFilled(false);
-						// é€€å‡º
-						SysClass.printLog("é€€å‡ºç™»å½•è¢«æŒ‰ä¸‹ï¼");
+						jbStudent.setBackground(Color.decode("#222222"));
+						jbStudent.setForeground(Color.black);
+						jbStudent.setContentAreaFilled(false);
+						// ÍË³ö
+						SysClass.printLog("ÍË³öµÇÂ¼±»°´ÏÂ£¡");
 						new run.JPanelTest();
 						dispose();
 					}
@@ -219,16 +216,16 @@ public class SysStudent {
 			});
 			
 			/*******************************************************************/
-			// ç¬¬ä¸€é¡µ
+			// µÚÒ»Ò³
 			JPanel jPInfo = new JPanel();
 			jPInfo.setOpaque(false);
 			jPInfo.setLayout(null);
 			
-			// åˆ›å»ºåˆ—è¡¨æ¡†
+			// ´´½¨ÁĞ±í¿ò
 			DefaultListModel<String> listModeTitle = new DefaultListModel<String>();
 			DefaultListModel<String> listModeThings = new DefaultListModel<String>();
 			
-			SysClass.printLog("æ­£åœ¨åˆå§‹åŒ–ä¸ªäººä¿¡æ¯â€¦â€¦");
+			SysClass.printLog("ÕıÔÚ³õÊ¼»¯¸öÈËĞÅÏ¢¡­¡­");
 			try {
 				Statement stmt = SysClass.SysData.conn.createStatement();
 				ResultSet rs = stmt.executeQuery("SELECT * FROM Student;");
@@ -250,29 +247,29 @@ public class SysStudent {
 	    		            		listModeThings.addElement(rs.getString(data.getColumnLabel(i)));
 	    		            	}
 	    		            	else {
-	    		            		listModeThings.addElement("Err - æ•°æ®ç±»å‹é”™è¯¯");
+	    		            		listModeThings.addElement("Err - Êı¾İÀàĞÍ´íÎó");
 	    		            	}
 	    	            	}
 	    	            }
 	            	}
 	            }
 				if(!has) {
-					SysClass.printErr("ç”¨æˆ·UIDæ¯”å¯¹é”™è¯¯ï¼");
+					SysClass.printErr("ÓÃ»§UID±È¶Ô´íÎó£¡");
 					dispose();
 					new run.JPanelTest();
 					return jPInfo;
 				}
 			} catch (SQLException e1) {
-				SysClass.printErr("æ•°æ®åº“æŸ¥è¯¢é”™è¯¯ï¼");
+				SysClass.printErr("Êı¾İ¿â²éÑ¯´íÎó£¡");
 				e1.printStackTrace();
 			}
-			SysClass.printLog("åˆå§‹åŒ–ä¸ªäººä¿¡æ¯å®Œæˆï¼");
+			SysClass.printLog("³õÊ¼»¯¸öÈËĞÅÏ¢Íê³É£¡");
 			
 			JList<String> listBoxTitle = new JList<String>(listModeTitle); 
 			 listBoxTitle.setBounds(294,146, 100,195);
 			 listBoxTitle.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 15));
 			 listBoxTitle.setBackground(Color.decode("#EEEEEE"));
-			 listBoxTitle.setFocusable(false);			// å»é™¤ç„¦ç‚¹æ¡†
+			 listBoxTitle.setFocusable(false);			// È¥³ı½¹µã¿ò
 			jPInfo.add(listBoxTitle);
 			listBoxTitle.addListSelectionListener(new ListSelectionListener() {
 				@Override
@@ -284,7 +281,7 @@ public class SysStudent {
 			 listBoxThings.setBounds(394,146, 150,195);
 			 listBoxThings.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 15));
 			 listBoxThings.setBackground(Color.decode("#EEEEEE"));
-			 listBoxThings.setFocusable(false);			// å»é™¤ç„¦ç‚¹æ¡†
+			 listBoxThings.setFocusable(false);			// È¥³ı½¹µã¿ò
 			jPInfo.add(listBoxThings);
 			listBoxThings.addListSelectionListener(new ListSelectionListener() {
 				@Override
@@ -298,29 +295,29 @@ public class SysStudent {
 				}
 	        });
 			
-			JButton jbRep = new JButton("ä¿®æ”¹ä¿¡æ¯");
-			jbRep.setBounds(290, 355, 185, 35);	  	 // è®¾ç½®ä½ç½®åŠå¤§å°
+			JButton jbRep = new JButton("ĞŞ¸ÄĞÅÏ¢");
+			jbRep.setBounds(290, 355, 185, 35);	  	 // ÉèÖÃÎ»ÖÃ¼°´óĞ¡
 			jbRep.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 15));
 			jbRep.setForeground(Color.white);
 			jbRep.setBackground(Color.decode("#4285f4"));
-			jbRep.setFocusPainted(false);			// å»é™¤ç„¦ç‚¹æ¡†
-			jbRep.setBorderPainted(false);		// å»é™¤è¾¹æ¡†
+			jbRep.setFocusPainted(false);			// È¥³ı½¹µã¿ò
+			jbRep.setBorderPainted(false);		// È¥³ı±ß¿ò
 			jPInfo.add(jbRep);
 			
 			jbRep.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					if(e.getSource()==jbRep) {
-						SysClass.printLog("ä¿®æ”¹è¢«æŒ‰ä¸‹ï¼");
+						SysClass.printLog("ĞŞ¸Ä±»°´ÏÂ£¡");
 						if(!isChanging) {
 							isChanging = true;
-							jbRep.setText("ç¡®è®¤ä¿¡æ¯");
+							jbRep.setText("È·ÈÏĞÅÏ¢");
 							listBoxThings.clearSelection();
 							jbRep.setBounds(290, 355, 130, 35);
 						}
 						else {
 							isChanging = false;
-							jbRep.setText("ä¿®æ”¹ä¿¡æ¯");
+							jbRep.setText("ĞŞ¸ÄĞÅÏ¢");
 							listBoxThings.clearSelection();
 							jbRep.setBounds(290, 355, 185, 35);
 						}
@@ -328,81 +325,79 @@ public class SysStudent {
 				}});
 			
 			JButton jbTru = new JButton("X");
-			jbTru.setBounds(430, 355, 45, 35);	  	 // è®¾ç½®ä½ç½®åŠå¤§å°
+			jbTru.setBounds(430, 355, 45, 35);	  	 // ÉèÖÃÎ»ÖÃ¼°´óĞ¡
 			jbTru.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 15));
 			jbTru.setForeground(Color.white);
 			jbTru.setBackground(Color.decode("#4285f4"));
-			jbTru.setFocusPainted(false);			// å»é™¤ç„¦ç‚¹æ¡†
-			jbTru.setBorderPainted(false);		// å»é™¤è¾¹æ¡†
+			jbTru.setFocusPainted(false);			// È¥³ı½¹µã¿ò
+			jbTru.setBorderPainted(false);		// È¥³ı±ß¿ò
 			jPInfo.add(jbTru);
 			
 			jbTru.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					if(e.getSource()==jbTru) {
-						SysClass.printLog("å–æ¶ˆè¢«æŒ‰ä¸‹ï¼");
+						SysClass.printLog("È¡Ïû±»°´ÏÂ£¡");
 							isChanging = false;
-							jbRep.setText("ä¿®æ”¹ä¿¡æ¯");
+							jbRep.setText("ĞŞ¸ÄĞÅÏ¢");
 							listBoxThings.clearSelection();
 							jbRep.setBounds(290, 355, 185, 35);
 				    }
 				}});
 			
-			// è¿™æ˜¯åº•å›¾
+			// ÕâÊÇµ×Í¼
 			JLabel bg=new JLabel(new ImageIcon("src\\ImgPic\\SysStuInfo_V3.png"));
 			jPInfo.add(bg);
 			bg.setBounds(-50, 0, 725, 540);
 			
 			
 			/*******************************************************************/
-			// ç¬¬äºŒé¡µ
+			// µÚ¶şÒ³
 			JPanel jPScore = new JPanel();
 			jPScore.setOpaque(false);
 			jPScore.setLayout(null);
 			
-			// åˆ›å»ºåˆ—è¡¨æ¡†
+			// ´´½¨ÁĞ±í¿ò
 			DefaultListModel<String> listScID = new DefaultListModel<String>();
-			listScID.addElement("ç¼–å·");
+			listScID.addElement("±àºÅ");
 			DefaultListModel<String> listScTime = new DefaultListModel<String>();
-			listScTime.addElement("å­¦å¹´");
+			listScTime.addElement("Ñ§Äê");
 			DefaultListModel<String> listScName = new DefaultListModel<String>();
-			listScName.addElement("è¯¾ç¨‹");
+			listScName.addElement("¿Î³Ì");
 			DefaultListModel<String> listScScore = new DefaultListModel<String>();
-			listScScore.addElement("æˆç»©");
+			listScScore.addElement("³É¼¨");
 			
-			JLabel titleList=new JLabel("æˆç»©åˆ—è¡¨");
+			JLabel titleList=new JLabel("³É¼¨ÁĞ±í");
 			titleList.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 17));
 			titleList.setForeground(Color.white);
 			titleList.setBounds(50,45,150,50);
 			jPScore.add(titleList);
 			
-			SysClass.printLog("æ­£åœ¨åˆå§‹åŒ–æˆç»©ä¿¡æ¯â€¦â€¦");
+			SysClass.printLog("ÕıÔÚ³õÊ¼»¯³É¼¨ĞÅÏ¢¡­¡­");
 			try {
-				Connection comstmt = DBUtil.createConnection(SysClass.SysData.mainurl + "score" + SysClass.SysData.mainurladd);
-				Statement stmt = comstmt.createStatement();
+				Statement stmt = DBUtil.createConnection("jdbc:mysql://system.chuhelan.com:3306/score?"+"characterEncoding=utf8&useUnicode=true&useSSL=false").createStatement();
 				ResultSet rs = stmt.executeQuery("SELECT * FROM uid"+ SysClass.SysData.uid +";");
 				while(rs.next()) {
 					listScID.addElement("");
-					listScID.addElement(rs.getInt("åºå·") + "");
+					listScID.addElement(rs.getInt("ĞòºÅ") + "");
 					listScTime.addElement("");
-					listScTime.addElement(rs.getString("å­¦å¹´"));
+					listScTime.addElement(rs.getString("Ñ§Äê"));
 					listScName.addElement("");
-					listScName.addElement(rs.getString("è¯¾ç¨‹"));
+					listScName.addElement(rs.getString("¿Î³Ì"));
 					listScScore.addElement("");
-					listScScore.addElement(rs.getInt("æˆç»©") + "");
+					listScScore.addElement(rs.getInt("³É¼¨") + "");
 				}
-				DBUtil.closeConnection(comstmt);
 			}
             catch (SQLException e1) {
-				SysClass.printErr("æ•°æ®åº“æŸ¥è¯¢é”™è¯¯ï¼");
+				SysClass.printErr("Êı¾İ¿â²éÑ¯´íÎó£¡");
 				e1.printStackTrace();
 			}
-			SysClass.printLog("åˆå§‹åŒ–æˆç»©ä¿¡æ¯å®Œæˆï¼");
+			SysClass.printLog("³õÊ¼»¯³É¼¨ĞÅÏ¢Íê³É£¡");
 			
 			JList<String> listBoxScID = new JList<String>(listScID); 
 			listBoxScID.setBounds(50,95,60,195);
 			listBoxScID.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 15));
-			listBoxScID.setFocusable(false);			// å»é™¤ç„¦ç‚¹æ¡†
+			listBoxScID.setFocusable(false);			// È¥³ı½¹µã¿ò
 			jPScore.add(listBoxScID);
 			listBoxScID.addListSelectionListener(new ListSelectionListener() {
 				@Override
@@ -429,7 +424,7 @@ public class SysStudent {
 			listBoxScTime.setBounds(110,95, 230,195);
 			listBoxScTime.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 15));
 			listBoxScTime.setBackground(Color.white);
-			listBoxScTime.setFocusable(false);			// å»é™¤ç„¦ç‚¹æ¡†
+			listBoxScTime.setFocusable(false);			// È¥³ı½¹µã¿ò
 			jPScore.add(listBoxScTime);
 			listBoxScTime.addListSelectionListener(new ListSelectionListener() {
 				@Override
@@ -456,7 +451,7 @@ public class SysStudent {
 			listBoxScName.setBounds(340,95, 190,195);
 			listBoxScName.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 15));
 			listBoxScName.setBackground(Color.white);
-			listBoxScName.setFocusable(false);			// å»é™¤ç„¦ç‚¹æ¡†
+			listBoxScName.setFocusable(false);			// È¥³ı½¹µã¿ò
 			jPScore.add(listBoxScName);
 			listBoxScName.addListSelectionListener(new ListSelectionListener() {
 				@Override
@@ -483,7 +478,7 @@ public class SysStudent {
 			listBoxScScore.setBounds(530,95, 50,195);
 			listBoxScScore.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 15));
 			listBoxScScore.setBackground(Color.white);
-			listBoxScScore.setFocusable(false);			// å»é™¤ç„¦ç‚¹æ¡†
+			listBoxScScore.setFocusable(false);			// È¥³ı½¹µã¿ò
 			jPScore.add(listBoxScScore);
 			listBoxScScore.addListSelectionListener(new ListSelectionListener() {
 				@Override
@@ -507,151 +502,19 @@ public class SysStudent {
 			            }
 			        });
 			
-			// è¿™æ˜¯åº•å›¾
+			// ÕâÊÇµ×Í¼
 			JLabel bga=new JLabel(new ImageIcon("src\\ImgPic\\SysStuScore_V2.png"));
 			jPScore.add(bga);
 			bga.setBounds(-50, 0, 725, 540);
 			
 			/*******************************************************************/
-			// ç¬¬ä¸‰é¡µ
-			JPanel jPTable = new JPanel();
-			 jPTable.setOpaque(false);
-			 jPTable.setLayout(null);
-			 
-			 DefaultListModel<String> listTbThings = new DefaultListModel<String>();
-			 listTbThings.addElement("å†…å®¹");
-			DefaultListModel<String> listTbSt = new DefaultListModel<String>();
-			listTbSt.addElement("çŠ¶æ€");
-			DefaultListModel<String> listTbWho = new DefaultListModel<String>();
-			listTbWho.addElement("å¤„ç†äºº");
-			 
-			JLabel titleListTable=new JLabel("æˆ‘çš„å·¥å•");
-			titleListTable.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 17));
-			titleListTable.setForeground(Color.white);
-			titleListTable.setBounds(35,111,150,50);
-			jPTable.add(titleListTable);
-			 
-			 JButton jbLogin = new JButton("");
-			jbLogin.setBounds(545,51, 50,41);	// è®¾ç½®ä½ç½®åŠå¤§å°
-			jbLogin.setContentAreaFilled(false); 	// å»é™¤èƒŒæ™¯
-			jbLogin.setFocusPainted(false);			// å»é™¤ç„¦ç‚¹æ¡†
-			jbLogin.setBorderPainted(false);		// å»é™¤è¾¹æ¡†
-			jPTable.add(jbLogin);
-
-			JTextField inTable=new JTextField();
-			 inTable.setFont(new Font("Microsoft Yahei UI Light",Font.PLAIN,13));
-			 inTable.setText("");
-			 inTable.setBounds(23,51, 525, 43);	
-			 inTable.setBorder(new EmptyBorder(0,0,0,0));
-			 jPTable.add(inTable);
-			
-			jbLogin.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				if(e.getSource()==jbLogin) {
-					SysClass.printLog("å‘é€è¢«æŒ‰ä¸‹ï¼");
-					if(inTable.getText().trim() == null || inTable.getText().trim().length() == 0) {
-						SysClass.printErr("å­˜åœ¨ç©ºç™½è¾“å…¥æ¡†ï¼");
-						JOptionPane.showMessageDialog(null, "Err - è¯·è¾“å…¥å®Œæ•´å†…å®¹ã€‚");
-					}
-					else {
-						try {
-							DBUtil.runUpdate("INSERT INTO `test`.`back` (`uid`, `å†…å®¹`, `çŠ¶æ€`, `å¤„ç†äºº`) VALUES (' " + SysClass.SysData.uid + " ', ' " + inTable.getText().trim() + " ', '0', '')", SysClass.SysData.mainurl + "test" + SysClass.SysData.mainurladd);
-							listTbThings.addElement(inTable.getText().trim());
-							listTbWho.addElement(" ");
-							listTbSt.addElement("æœªå¤„ç†");
-							SysClass.printLog("å·¥å•å‘é€å®Œæ¯•ï¼");
-						}
-						catch (SQLException e1) {
-							SysClass.printErr("æ•°æ®åº“æŸ¥è¯¢é”™è¯¯ï¼");
-							e1.printStackTrace();
-						}
-					}
-				}
-			}});
-			 
-			try {
-				Statement stmt = SysClass.SysData.conn.createStatement();
-				ResultSet rs = stmt.executeQuery("SELECT * FROM Back");
-				SysClass.printLog("æ­£åœ¨åˆå§‹åŒ–å·¥å•ä¿¡æ¯â€¦â€¦");
-				while(rs.next()) {
-					int uid = rs.getInt("uid");
-					String things = rs.getString("å†…å®¹");
-					int stat = rs.getInt("çŠ¶æ€");
-					String getter = rs.getString("å¤„ç†äºº");
-					
-					if(uid == SysClass.SysData.uid) {
-						listTbThings.addElement(things);
-						if(stat == 0) {
-							listTbSt.addElement("æœªå¤„ç†");
-							listTbWho.addElement(" ");
-						}
-						else {
-							listTbSt.addElement("å·²å¤„ç†");
-							listTbWho.addElement(getter);
-						}
-					}
-				}
-			}
-			catch (SQLException e1) {
-				SysClass.printErr("æ•°æ®åº“æŸ¥è¯¢é”™è¯¯ï¼");
-				e1.printStackTrace();
-			}
-			SysClass.printLog("åˆå§‹åŒ–å·¥å•ä¿¡æ¯å®Œæˆã€‚");
-			
-			JList<String> TbThings = new JList<String>(listTbThings); 
-			TbThings.setBounds(35,160,400,320);
-			TbThings.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 15));
-			TbThings.setBackground(Color.white);
-			TbThings.setFocusable(false);			// å»é™¤ç„¦ç‚¹æ¡†
-			jPTable.add(TbThings);
-			TbThings.addListSelectionListener(new ListSelectionListener() {
-				@Override
-				public void valueChanged(ListSelectionEvent arg0) {
-					TbThings.clearSelection();
-				}
-	        });
-			
-			JList<String> TbStat = new JList<String>(listTbSt); 
-			TbStat.setBounds(435,160,50,320);
-			TbStat.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 15));
-			TbStat.setBackground(Color.white);
-			TbStat.setFocusable(false);			// å»é™¤ç„¦ç‚¹æ¡†
-			jPTable.add(TbStat );
-			TbStat.addListSelectionListener(new ListSelectionListener() {
-				@Override
-				public void valueChanged(ListSelectionEvent arg0) {
-					TbStat.clearSelection();
-				}
-	        });
-			
-			JList<String> TbWho = new JList<String>(listTbWho); 
-			TbWho.setBounds(535,160,50,320);
-			TbWho.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 15));
-			TbWho.setBackground(Color.white);
-			TbWho.setFocusable(false);			// å»é™¤ç„¦ç‚¹æ¡†
-			jPTable.add(TbWho );
-			TbWho.addListSelectionListener(new ListSelectionListener() {
-				@Override
-				public void valueChanged(ListSelectionEvent arg0) {
-					TbWho.clearSelection();
-				}
-	        });
-			 
-			// è¿™æ˜¯åº•å›¾
-			JLabel bgb=new JLabel(new ImageIcon("src\\ImgPic\\SysStuTable_V1.png"));
-			 jPTable.add(bgb);
-			bgb.setBounds(-50, 0, 725, 540);
-			
-			/*******************************************************************/
-			// æ·»åŠ è¿›CardLayout
-			jPC.add("info", jPInfo);				// ç¬¬ä¸€é¡µ
-			jPC.add("score", jPScore);		// ç¬¬äºŒé¡µ
-			jPC.add("table", jPTable);			// ç¬¬ä¸‰é¡µ
+			// Ìí¼Ó½øCardLayout
+			jPC.add("info", jPInfo);				// µÚÒ»Ò³
+			jPC.add("score", jPScore);		// µÚ¶şÒ³
 			
 			
 			/*******************************************************************/
-			// è¿™æ˜¯ä¸»åº•å›¾
+			// ÕâÊÇÖ÷µ×Í¼
 			JLabel bgm=new JLabel(new ImageIcon("src\\ImgPic\\SysUI_V2.png"));
 			 jP.add(bgm);
 			bgm.setBounds(0, 0, 956, 513);
