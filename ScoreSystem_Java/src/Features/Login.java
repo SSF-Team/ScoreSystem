@@ -2,6 +2,8 @@ package Features;
 
 import java.sql.*;
 
+import javax.swing.JOptionPane;
+
 public class Login {
 	public static String getPassport(String name, String password) throws SQLException {
 		SysClass.printLog("开始验证登录……");
@@ -43,7 +45,7 @@ public class Login {
             }
 		}
 		SysClass.printLog("验证完成：");
-		return "Err - None";
+		return "Err - 数据库连接失败，请检查网络";
 	}
 	
 	// 连接数据库

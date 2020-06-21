@@ -15,6 +15,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -50,7 +52,7 @@ public static class JPanelTest extends JFrame {
 		this.setVisible(true);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.getContentPane().setBackground(Color.white);
+		this.getContentPane().setBackground(Color.decode("#F9F9F9"));
 	}
  
 	public JPanel getMain() {
@@ -58,6 +60,20 @@ public static class JPanelTest extends JFrame {
 		jP.setOpaque(false);
 		jP.setLayout(null);									// 设置空布局，即绝对布局
 
+		System.out.println("Hey，欢迎使用 ScoreSystem！这是 Stapx Steve 写了好久的实训作业 ——");
+		System.out.println("虽然代码康起来乱七八糟的，但它真的消耗了我好多好多的精力的 QAQ");
+		System.out.println("好了 —— 下面开始加载！");
+		System.out.println("");
+		System.out.println("*****************************************************************");
+		System.out.println("    ██████ ╗████████ ╗ █████ ╗   ██████ ╗      ██  ╗   ██  ╗      ");
+		System.out.println("    ██ ╔══════╝ ╚════██ ╔════╝██ ╔══██ ╗ ██ ╔═════██ ╗ ╚ ██ ╗ ██ ╔  ╝     ");
+		System.out.println("    ██████ ╗         ██ ║        ██████ ║ ██████ ╔ ╝       ╚ ███ ╔ ╝         ");
+		System.out.println("    ╚══════██ ║         ██ ║        ██ ╔══██ ║ ██ ╔══════╝          ██ ╔ ██ ╗       ");
+		System.out.println("    ██████ ║         ██ ║        ██ ║   ██ ║ ██ ║                    ██ ╔ ╝ ██ ╗       ");
+		System.out.println("    ╚══════════╝           ╚══╝          ╚══╝     ╚══╝   ╚══╝                      ╚══╝      ╚══╝       ");
+		System.out.println("*****************************************************************");
+		System.out.println("");
+		
 		JLabel title=new JLabel("登 录");
 		title.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 20));
 		title.setForeground(Color.white);
@@ -69,17 +85,62 @@ public static class JPanelTest extends JFrame {
 		subtitle.setBounds(110,95, 330,50);
 		jP.add(subtitle);
 		
+		JLabel inusubtitle=new JLabel();
+		JLabel inpsubtitle=new JLabel();
+		
 		JTextField inUser=new JTextField();
+		inUser.setOpaque(false);
 		inUser.setFont(new Font("Microsoft Yahei UI Light",Font.PLAIN,13));    //修改字体样式
 		inUser.setText("");
 		inUser.setBounds(32,150, 255, 35);	
 		jP.add(inUser);
 		
+		inUser.addFocusListener(new FocusListener(){
+   			//获得焦点
+   			@Override
+   			public void focusGained(FocusEvent e) {
+   				inusubtitle.setText(" ");
+   			}
+   			//失去焦点
+   			@Override
+   			public void focusLost(FocusEvent e) {
+   				if(inUser.getText().trim() == null || inUser.getText().trim().length() == 0) {
+   					inusubtitle.setText("账户");
+				}
+   			}
+   		});
+		
+		inusubtitle.setText("账户");
+		inusubtitle.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 14));
+		inusubtitle.setBounds(35,150, 255, 35);
+		jP.add(inusubtitle);
+		
 		JPasswordField inPass=new JPasswordField();
+		inPass.setOpaque(false);
 		inPass.setFont(new Font("Microsoft Yahei UI Light",Font.PLAIN,13));    //修改字体样式
 		inPass.setText("");
 		inPass.setBounds(32,197, 255, 35);
 		jP.add(inPass);
+		
+		inPass.addFocusListener(new FocusListener(){
+   			//获得焦点
+   			@Override
+   			public void focusGained(FocusEvent e) {
+   				inpsubtitle.setText(" ");
+   			}
+   			//失去焦点
+   			@Override
+   			public void focusLost(FocusEvent e) {
+   				if(new String(inPass.getPassword()).trim() == null || new String(inPass.getPassword()).trim().length() == 0) {
+   					inpsubtitle.setText("密码");
+				}
+   			}
+   		});
+		
+		inpsubtitle.setText("密码");
+		inpsubtitle.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 14));
+		inpsubtitle.setBounds(35,197, 255, 35);
+		jP.add(inpsubtitle);
 		
 		JButton jbLogin = new JButton("");
 		jbLogin.setBounds(133,267, 50,50);	// 设置位置及大小
@@ -111,7 +172,7 @@ public static class JPanelTest extends JFrame {
 							}
 							else if(loginBack.indexOf("教师") >= 0) {
 								SysClass.printLog("教师登录。");
-								SysTeacher.JPanelSysTec jp = new SysTeacher.JPanelSysTec();
+								new SysTeacher.JPanelSysTec();
 							}
 							else {
 								SysClass.printErr("用户类型验证错误！");

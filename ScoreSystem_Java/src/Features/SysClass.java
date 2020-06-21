@@ -7,6 +7,8 @@ import java.util.Date;
 public class SysClass {
 	
 	public static class SysData {
+		public static String version = "Ver - Dev.0.2.5";
+
 		public static int uid ;
 		public static String uname;
 		public static Connection conn;

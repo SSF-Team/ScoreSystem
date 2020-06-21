@@ -12,6 +12,8 @@ package SysUI;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -59,8 +61,13 @@ public class SysStudent {
 			
 			JLabel title=new JLabel("学生管理");
 			title.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 17));
-			title.setBounds(70,-5, 150,50);	
+			title.setBounds(75,-5, 150,50);	
 			jP.add(title);
+			
+			JLabel version=new JLabel(SysClass.SysData.version);
+			version.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 13));
+			version.setBounds(15,446, 150,50);	
+			jP.add(version);
 			
 			// 卡片框架
 			jPC.setOpaque(false);
@@ -79,7 +86,7 @@ public class SysStudent {
 			JButton jbInfo = new JButton("     基础信息");
 			JButton jbScore = new JButton("     成绩信息");
 			JButton jbTable = new JButton("     提交工单");
-			JButton jbExit = new JButton("     退出登录");
+			JButton jbExit = new JButton("");
 			
 			jbInfo.setBounds(0,55, 230,35);	   // 设置位置及大小
 			jbInfo.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 15));
@@ -183,7 +190,7 @@ public class SysStudent {
 				}
 			});
 			
-			jbExit.setBounds(0,160, 230,35);	   // 设置位置及大小
+			jbExit.setBounds(187,455, 30,30);	   // 设置位置及大小
 			jbExit.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 15));
 			jbExit.setHorizontalAlignment(SwingConstants.LEFT);
 			jbExit.setBackground(Color.decode("#222222"));
@@ -349,7 +356,7 @@ public class SysStudent {
 				}});
 			
 			// 这是底图
-			JLabel bg=new JLabel(new ImageIcon("src\\ImgPic\\SysStuInfo_V3.png"));
+			JLabel bg=new JLabel(new ImageIcon("src\\ImgPic\\SysStuInfo_V4.png"));
 			jPInfo.add(bg);
 			bg.setBounds(-50, 0, 725, 540);
 			
@@ -537,13 +544,36 @@ public class SysStudent {
 			jbLogin.setFocusPainted(false);			// 去除焦点框
 			jbLogin.setBorderPainted(false);		// 去除边框
 			jPTable.add(jbLogin);
+			
+			JLabel inpsubtitle=new JLabel();
 
 			JTextField inTable=new JTextField();
+			inTable.setOpaque(false);
 			 inTable.setFont(new Font("Microsoft Yahei UI Light",Font.PLAIN,13));
 			 inTable.setText("");
 			 inTable.setBounds(23,51, 525, 43);	
 			 inTable.setBorder(new EmptyBorder(0,0,0,0));
 			 jPTable.add(inTable);
+			 
+			 inTable.addFocusListener(new FocusListener(){
+		   			//获得焦点
+		   			@Override
+		   			public void focusGained(FocusEvent e) {
+		   				inpsubtitle.setText(" ");
+		   			}
+		   			//失去焦点
+		   			@Override
+		   			public void focusLost(FocusEvent e) {
+		   				if(inTable.getText().trim() == null || inTable.getText().trim().length() == 0) {
+		   					inpsubtitle.setText("请输入工单内容");
+						}
+		   			}
+		   		});
+			 
+			inpsubtitle.setText("请输入工单内容");
+			inpsubtitle.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 14));
+			inpsubtitle.setBounds(28, 51, 525, 43);
+			jPTable.add(inpsubtitle);
 			
 			jbLogin.addActionListener(new ActionListener() {
 			@Override
@@ -552,7 +582,7 @@ public class SysStudent {
 					SysClass.printLog("发送被按下！");
 					if(inTable.getText().trim() == null || inTable.getText().trim().length() == 0) {
 						SysClass.printErr("存在空白输入框！");
-						JOptionPane.showMessageDialog(null, "Err - 请输入完整内容。");
+						JOptionPane.showMessageDialog(null, "Err - 请输入内容。");
 					}
 					else {
 						try {
@@ -561,6 +591,7 @@ public class SysStudent {
 							listTbWho.addElement(" ");
 							listTbSt.addElement("未处理");
 							SysClass.printLog("工单发送完毕！");
+							JOptionPane.showMessageDialog(null, "提交工单成功！");
 						}
 						catch (SQLException e1) {
 							SysClass.printErr("数据库查询错误！");
