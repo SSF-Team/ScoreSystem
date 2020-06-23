@@ -15,10 +15,12 @@
     exit;
  }
 
- $servername = "system.chuhelan.com";
- $username = "sys_root";
- $password = "Admin";
- $dbname = "test";
+
+// SQL Info
+ $servername = "地址";
+ $username = "账号";
+ $password = "密码";
+ $dbname = "数据库";
   
  // 创建连接
  $conn = mysqli_connect($servername, $username, $password, $dbname);
