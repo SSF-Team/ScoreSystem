@@ -834,6 +834,7 @@ public class SysTeacher {
 					String things = rs.getString("内容");
 					int stat = rs.getInt("状态");
 					String getter = rs.getString("处理人");
+					int id = rs.getInt("id");
 					
 					Statement stmta = SysClass.SysData.conn.createStatement();
 					ResultSet rsa = stmta.executeQuery("SELECT * FROM Student");
@@ -842,7 +843,7 @@ public class SysTeacher {
 						String teachername = rsa.getString("班主任");
 						if(uid == uidaa && teachername.equals(SysClass.SysData.uname)) {
 							listTbThingsa.addElement(things);
-							listIDa.addElement(uid + "");
+							listIDa.addElement(id + "");
 							if(stat == 0) {
 								listTbSta.addElement("未处理");
 								listTbWhoa.addElement(" ");
@@ -924,10 +925,16 @@ public class SysTeacher {
 				public void actionPerformed(ActionEvent e) {
 					if(e.getSource()==jbtDel) {
 						SysClass.printLog("处理工单被按下！");
-						try {
-							DBUtil.runUpdate("UPDATE `test`.`back` SET '状态` = '1'，'处理人' = '"+ SysClass.SysData.uname +"' WHERE `back`.`id` = "+ intbDel.getText().trim() +"", SysClass.SysData.mainurl + "test" + SysClass.SysData.mainurladd);
-						} catch (SQLException e1) {
-							e1.printStackTrace();
+						if(intbDel.getText().trim() == null || intbDel.getText().trim().length() == 0) {
+							JOptionPane.showMessageDialog(null, "Err - 请填写内容！");
+						}
+						else {
+							try {
+								DBUtil.runUpdate("UPDATE `test`.`back` SET `状态` = '1', `处理人` = '"+ SysClass.SysData.uname +"' WHERE `back`.`id` = " + intbDel.getText().trim(), SysClass.SysData.mainurl + "test" + SysClass.SysData.mainurladd);
+								JOptionPane.showMessageDialog(null, "处理工单成功！");
+							} catch (SQLException e1) {
+								e1.printStackTrace();
+							}
 						}
 					}
 				}
