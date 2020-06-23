@@ -22,6 +22,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -46,6 +47,9 @@ public static class JPanelTest extends JFrame {
  
 		c.add(getMain());
  
+		ImageIcon imageIcon = new ImageIcon("src\\ImgPic\\SSSIcon.png"); 
+		
+        this.setIconImage(imageIcon.getImage());  
 		this.setSize(320,430);
 		this.setUndecorated(false);
 		this.setLocationRelativeTo(null);
@@ -56,6 +60,8 @@ public static class JPanelTest extends JFrame {
 	}
  
 	public JPanel getMain() {
+		JLabel bg=new JLabel(new ImageIcon("src\\ImgPic\\MainUI_V1.png"));
+		
 		JPanel jP = new JPanel();
 		jP.setOpaque(false);
 		jP.setLayout(null);									// 设置空布局，即绝对布局
@@ -73,6 +79,31 @@ public static class JPanelTest extends JFrame {
 		System.out.println("    ╚══════════╝           ╚══╝          ╚══╝     ╚══╝   ╚══╝                      ╚══╝      ╚══╝       ");
 		System.out.println("*****************************************************************");
 		System.out.println("");
+
+		Boolean[] isEnd = { false };
+		JTextField inUser=new JTextField();
+		JPasswordField inPass=new JPasswordField();
+		
+		 // 按钮监听线程方法
+		 class MyThread extends Thread {
+			    public void run() {
+			    	while(!isEnd[0]) {
+			    		if(new String(inPass.getPassword()).trim() == null || new String(inPass.getPassword()).trim().length() == 0 || inUser.getText().trim() == null || inUser.getText().trim().length() == 0) {
+			    			Icon icon=new ImageIcon("src\\\\ImgPic\\\\MainUI_V1.png");
+			    			bg.setIcon(icon);
+			    		}
+			    		else {
+			    			Icon icon=new ImageIcon("src\\\\ImgPic\\\\MainUI_V2.png");
+			    			bg.setIcon(icon);
+			    		}
+			    	}
+			    	SysClass.printLog("按钮监控结束。");
+			    }
+			}
+		SysClass.printLog("按钮监控运行中……");
+		MyThread buttonchanger = new MyThread();
+		buttonchanger.start();
+		
 		
 		JLabel title=new JLabel("登 录");
 		title.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 20));
@@ -88,7 +119,6 @@ public static class JPanelTest extends JFrame {
 		JLabel inusubtitle=new JLabel();
 		JLabel inpsubtitle=new JLabel();
 		
-		JTextField inUser=new JTextField();
 		inUser.setOpaque(false);
 		inUser.setFont(new Font("Microsoft Yahei UI Light",Font.PLAIN,13));    //修改字体样式
 		inUser.setText("");
@@ -115,7 +145,6 @@ public static class JPanelTest extends JFrame {
 		inusubtitle.setBounds(35,150, 255, 35);
 		jP.add(inusubtitle);
 		
-		JPasswordField inPass=new JPasswordField();
 		inPass.setOpaque(false);
 		inPass.setFont(new Font("Microsoft Yahei UI Light",Font.PLAIN,13));    //修改字体样式
 		inPass.setText("");
@@ -166,6 +195,7 @@ public static class JPanelTest extends JFrame {
 							JOptionPane.showMessageDialog(null,loginBack);
 						}
 						else {
+							isEnd[0] =true;
 							if(loginBack.indexOf("学生") >= 0) {
 								SysClass.printLog("学生登录。");
 								new SysStudent.JPanelSysSud();
@@ -186,6 +216,8 @@ public static class JPanelTest extends JFrame {
 				}
 			}
 		}});
+		
+		 this.getRootPane().setDefaultButton(jbLogin);		// 设置界面默认按钮
 		
 		JButton jbReg = new JButton("<html><u>创建一个账户</u></html>");
 		jbReg.setBounds(10,360, 300,20);	// 设置位置及大小
@@ -232,7 +264,6 @@ public static class JPanelTest extends JFrame {
 		}});
 		
 		// 这是底图
-		JLabel bg=new JLabel(new ImageIcon("src\\ImgPic\\MainUI_V2.png"));
 		 jP.add(bg);
 		bg.setBounds(0, 0, 315, 353);
 		

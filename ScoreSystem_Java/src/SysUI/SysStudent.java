@@ -91,8 +91,9 @@ public class SysStudent {
 			jbInfo.setBounds(0,55, 230,35);	   // 设置位置及大小
 			jbInfo.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 15));
 			jbInfo.setHorizontalAlignment(SwingConstants.LEFT);
-			jbInfo.setBackground(Color.decode("#222222"));
-			jbInfo.setContentAreaFilled(false); 	 // 去除背景
+			jbInfo.setBackground(Color.decode("#4285f4"));
+			jbInfo.setForeground(Color.white);
+			jbInfo.setContentAreaFilled(true); 	 // 去除背景
 			jbInfo.setFocusPainted(false);			// 去除焦点框
 			jbInfo.setBorderPainted(false);			// 去除边框
 			jP.add(jbInfo);
@@ -278,7 +279,6 @@ public class SysStudent {
 			JList<String> listBoxTitle = new JList<String>(listModeTitle); 
 			 listBoxTitle.setBounds(294,146, 100,195);
 			 listBoxTitle.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 15));
-			 listBoxTitle.setBackground(Color.decode("#EEEEEE"));
 			 listBoxTitle.setFocusable(false);			// 去除焦点框
 			jPInfo.add(listBoxTitle);
 			listBoxTitle.addListSelectionListener(new ListSelectionListener() {
@@ -290,7 +290,6 @@ public class SysStudent {
 			JList<String> listBoxThings = new JList<String>(listModeThings); 
 			 listBoxThings.setBounds(394,146, 150,195);
 			 listBoxThings.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 15));
-			 listBoxThings.setBackground(Color.decode("#EEEEEE"));
 			 listBoxThings.setFocusable(false);			// 去除焦点框
 			jPInfo.add(listBoxThings);
 			listBoxThings.addListSelectionListener(new ListSelectionListener() {
@@ -570,13 +569,15 @@ public class SysStudent {
 		   			}
 		   		});
 			 
+			 int[] id = { 0 };
+			 
 			inpsubtitle.setText("请输入工单内容");
 			inpsubtitle.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 14));
 			inpsubtitle.setBounds(28, 51, 525, 43);
 			jPTable.add(inpsubtitle);
 			
 			jbLogin.addActionListener(new ActionListener() {
-			@Override
+				@Override
 			public void actionPerformed(ActionEvent e) {
 				if(e.getSource()==jbLogin) {
 					SysClass.printLog("发送被按下！");
@@ -586,7 +587,8 @@ public class SysStudent {
 					}
 					else {
 						try {
-							DBUtil.runUpdate("INSERT INTO `test`.`back` (`uid`, `内容`, `状态`, `处理人`) VALUES (' " + SysClass.SysData.uid + " ', ' " + inTable.getText().trim() + " ', '0', '')", SysClass.SysData.mainurl + "test" + SysClass.SysData.mainurladd);
+							DBUtil.runUpdate("INSERT INTO `test`.`back` (`uid`,`id`, `内容`, `状态`, `处理人`) VALUES (' " + SysClass.SysData.uid + " ', '"+ (id[0]+1) +" ', ' " + inTable.getText().trim() + " ', '0', '')", SysClass.SysData.mainurl + "test" + SysClass.SysData.mainurladd);
+							id[0] += 1;
 							listTbThings.addElement(inTable.getText().trim());
 							listTbWho.addElement(" ");
 							listTbSt.addElement("未处理");
@@ -606,6 +608,7 @@ public class SysStudent {
 				ResultSet rs = stmt.executeQuery("SELECT * FROM Back");
 				SysClass.printLog("正在初始化工单信息……");
 				while(rs.next()) {
+					id[0] = rs.getInt("id");
 					int uid = rs.getInt("uid");
 					String things = rs.getString("内容");
 					int stat = rs.getInt("状态");

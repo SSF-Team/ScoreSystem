@@ -91,8 +91,8 @@ public class SysTeacher {
 			jbInfo.setBounds(0,55, 230,35);	   // 设置位置及大小
 			jbInfo.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 15));
 			jbInfo.setHorizontalAlignment(SwingConstants.LEFT);
-			jbInfo.setBackground(Color.decode("#222222"));
-			jbInfo.setContentAreaFilled(false); 	 // 去除背景
+			jbInfo.setBackground(Color.decode("#4285f4"));
+			jbInfo.setForeground(Color.white);
 			jbInfo.setFocusPainted(false);			// 去除焦点框
 			jbInfo.setBorderPainted(false);			// 去除边框
 			jP.add(jbInfo);
@@ -281,6 +281,9 @@ public class SysTeacher {
 						jbTable.setBackground(Color.decode("#222222"));
 						jbTable.setForeground(Color.black);
 						jbTable.setContentAreaFilled(false);
+						// 功能
+						SysClass.printLog("工单处理被按下！");
+						pageCard.show(jPC, "tableget");
 					}
 				}
 			});
@@ -657,16 +660,283 @@ public class SysTeacher {
 			});
 			
 			JButton jbDel = new JButton("");
-			jbDel.setBounds(555,53, 35,40);	   // 设置位置及大小
+			jbDel.setBounds(575,220, 35,40);	   // 设置位置及大小
 			jbDel.setContentAreaFilled(false); 	 // 去除背景
 			jbDel.setFocusPainted(false);			// 去除焦点框
 			jbDel.setBorderPainted(false);			// 去除边框
 			jPStudent.add(jbDel);
+			jbDel.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if(e.getSource()==jbDel) {
+						SysClass.printLog("删除学生被按下！");
+						if(inDel.getText().trim() == null || inDel.getText().trim().length() == 0) {
+							SysClass.printErr("存在空白输入框！");
+							JOptionPane.showMessageDialog(null, "Err - 请输入完整内容。");
+						}
+						else {
+							Statement stmt;
+							try {
+								stmt = SysClass.SysData.conn.createStatement();
+								ResultSet rs = stmt.executeQuery("SELECT * FROM Student;");
+								while(rs.next()) {
+									String id = rs.getString("学号");
+									int uid = rs.getInt("uid");
+									if(id.equals(inDel.getText().trim())) {
+										int where = listID.indexOf(inDel.getText().trim());
+										SysClass.printErr("检索学生：");
+										SysClass.printErr(">>" + where);
+										if(where >= 0) {
+											DBUtil.runUpdate("DELETE FROM `test`.`student` WHERE `student`.`uid` = "+ uid +"", SysClass.SysData.mainurl + "test" + SysClass.SysData.mainurladd);
+											listID.removeElementAt(where);
+											listName.removeElementAt(where);
+											JOptionPane.showMessageDialog(null, "移除学生成功！");
+										}
+										else {
+											JOptionPane.showMessageDialog(null, "Err - 没有此学生！");
+										}
+									}
+								}
+							} catch (SQLException e1) {
+								e1.printStackTrace();
+							}
+						}
+					}
+				}
+			});
 			
 			// 这是底图
 			JLabel bga=new JLabel(new ImageIcon("src\\ImgPic\\SysTechStuShow_V2.png"));
 			jPStudent.add(bga);
 			bga.setBounds(-50, 0, 725, 540);
+			
+			/*******************************************************************/
+			// 第三页
+			JPanel jPScore = new JPanel();
+			jPScore.setOpaque(false);
+			jPScore.setLayout(null);
+			
+			JLabel scoList=new JLabel("成绩列表");
+			scoList.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 17));
+			scoList.setForeground(Color.white);
+			scoList.setBounds(33,48,150,50);
+			jPScore.add(scoList);
+			
+			JLabel scoAdd=new JLabel("添加成绩");
+			scoAdd.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 17));
+			scoAdd.setForeground(Color.white);
+			scoAdd.setBounds(33,255,150,50);
+			jPScore.add(scoAdd);
+			
+			JLabel scoDel=new JLabel("删除成绩");
+			scoDel.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 17));
+			scoDel.setForeground(Color.white);
+			scoDel.setBounds(33,375,150,50);
+			jPScore.add(scoDel);
+			
+			JLabel suscobdel=new JLabel();
+			
+			JTextField inscoDel=new JTextField();
+			inscoDel.setOpaque(false);
+			inscoDel.setFont(new Font("Microsoft Yahei UI Light",Font.PLAIN,13));    //修改字体样式
+			inscoDel.setText("");
+			inscoDel.setBounds(33,435,233,35);	
+			jPScore.add(inscoDel);
+			
+			inscoDel.addFocusListener(new FocusListener(){
+	   			//获得焦点
+	   			@Override
+	   			public void focusGained(FocusEvent e) {
+	   				suscobdel.setText(" ");
+	   			}
+	   			//失去焦点
+	   			@Override
+	   			public void focusLost(FocusEvent e) {
+	   				if(inscoDel.getText().trim() == null || inscoDel.getText().trim().length() == 0) {
+	   					suscobdel.setText("学号");
+					}
+	   			}
+	   		});
+			
+			suscobdel.setText("学号");
+			suscobdel.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 14));
+			suscobdel.setBounds(35,435,150,35);
+			jPScore.add(suscobdel);
+			
+			// 这是底图
+			JLabel bgb=new JLabel(new ImageIcon("src\\ImgPic\\SysTechScoShow_V1.png"));
+			jPScore.add(bgb);
+			bgb.setBounds(-50, 0, 725, 540);
+			
+			/*******************************************************************/
+			// 第四页
+			
+			JPanel jPTableSet = new JPanel();
+			jPTableSet.setOpaque(false);
+			jPTableSet.setLayout(null);
+			
+			JLabel tabList=new JLabel("工单列表");
+			tabList.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 17));
+			tabList.setForeground(Color.white);
+			tabList.setBounds(33,48,150,50);
+			jPTableSet.add(tabList);
+			
+			JLabel tabPass=new JLabel("处理工单");
+			tabPass.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 17));
+			tabPass.setForeground(Color.white);
+			tabPass.setBounds(33,375,150,50);
+			jPTableSet.add(tabPass);
+			
+			JLabel subtbdel=new JLabel();
+			
+			JTextField intbDel=new JTextField();
+			intbDel.setOpaque(false);
+			intbDel.setFont(new Font("Microsoft Yahei UI Light",Font.PLAIN,13));    //修改字体样式
+			intbDel.setText("");
+			intbDel.setBounds(33,435, 233, 35);	
+			jPTableSet.add(intbDel);
+			
+			intbDel.addFocusListener(new FocusListener(){
+	   			//获得焦点
+	   			@Override
+	   			public void focusGained(FocusEvent e) {
+	   				subtbdel.setText(" ");
+	   			}
+	   			//失去焦点
+	   			@Override
+	   			public void focusLost(FocusEvent e) {
+	   				if(intbDel.getText().trim() == null || intbDel.getText().trim().length() == 0) {
+	   					subtbdel.setText("编号");
+					}
+	   			}
+	   		});
+			
+			subtbdel.setText("编号");
+			subtbdel.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 14));
+			subtbdel.setBounds(35,435, 255, 35);
+			jPTableSet.add(subtbdel);
+			
+			DefaultListModel<String> listTbThingsa = new DefaultListModel<String>();
+			 listTbThingsa.addElement("内容");
+			DefaultListModel<String> listTbSta = new DefaultListModel<String>();
+			listTbSta.addElement("状态");
+			DefaultListModel<String> listTbWhoa = new DefaultListModel<String>();
+			listTbWhoa.addElement("处理人");
+			DefaultListModel<String> listIDa = new DefaultListModel<String>();
+			listIDa.addElement("ID");
+			 
+			try {
+				Statement stmt = SysClass.SysData.conn.createStatement();
+				ResultSet rs = stmt.executeQuery("SELECT * FROM Back");
+				SysClass.printLog("正在初始化工单信息……");
+				while(rs.next()) {
+					int uid = rs.getInt("uid");
+					String things = rs.getString("内容");
+					int stat = rs.getInt("状态");
+					String getter = rs.getString("处理人");
+					
+					Statement stmta = SysClass.SysData.conn.createStatement();
+					ResultSet rsa = stmta.executeQuery("SELECT * FROM Student");
+					while(rsa.next()) {
+						int uidaa = rsa.getInt("uid");
+						String teachername = rsa.getString("班主任");
+						if(uid == uidaa && teachername.equals(SysClass.SysData.uname)) {
+							listTbThingsa.addElement(things);
+							listIDa.addElement(uid + "");
+							if(stat == 0) {
+								listTbSta.addElement("未处理");
+								listTbWhoa.addElement(" ");
+							}
+							else {
+								listTbSta.addElement("已处理");
+								listTbWhoa.addElement(getter);
+							}
+						}
+					}
+				}
+			}
+			catch (SQLException e1) {
+				SysClass.printErr("数据库查询错误！");
+				e1.printStackTrace();
+			}
+			SysClass.printLog("初始化工单信息完成。");
+			
+			JList<String> TbIDa = new JList<String>(listIDa); 
+			TbIDa.setBounds(35,95,30,270);
+			TbIDa.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 15));
+			TbIDa.setBackground(Color.white);
+			TbIDa.setFocusable(false);			// 去除焦点框
+			jPTableSet.add(TbIDa);
+			TbIDa.addListSelectionListener(new ListSelectionListener() {
+				@Override
+				public void valueChanged(ListSelectionEvent arg0) {
+					TbIDa.clearSelection();
+				}
+	        });
+			
+			JList<String> TbThingsa = new JList<String>(listTbThingsa); 
+			TbThingsa.setBounds(65,95,370,270);
+			TbThingsa.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 15));
+			TbThingsa.setBackground(Color.white);
+			TbThingsa.setFocusable(false);			// 去除焦点框
+			jPTableSet.add(TbThingsa);
+			TbThingsa.addListSelectionListener(new ListSelectionListener() {
+				@Override
+				public void valueChanged(ListSelectionEvent arg0) {
+					TbThingsa.clearSelection();
+				}
+	        });
+			
+			JList<String> TbStata = new JList<String>(listTbSta); 
+			TbStata.setBounds(435,95,50,270);
+			TbStata.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 15));
+			TbStata.setBackground(Color.white);
+			TbStata.setFocusable(false);			// 去除焦点框
+			jPTableSet.add(TbStata);
+			TbStata.addListSelectionListener(new ListSelectionListener() {
+				@Override
+				public void valueChanged(ListSelectionEvent arg0) {
+					TbStata.clearSelection();
+				}
+	        });
+			
+			JList<String> TbWhoa = new JList<String>(listTbWhoa); 
+			TbWhoa.setBounds(535,95,50,270);
+			TbWhoa.setFont(new Font ("Microsoft Yahei UI Light", Font.PLAIN, 15));
+			TbWhoa.setBackground(Color.white);
+			TbWhoa.setFocusable(false);			// 去除焦点框
+			jPTableSet.add(TbWhoa );
+			TbWhoa.addListSelectionListener(new ListSelectionListener() {
+				@Override
+				public void valueChanged(ListSelectionEvent arg0) {
+					TbWhoa.clearSelection();
+				}
+	        });
+			
+			JButton jbtDel = new JButton("");
+			jbtDel.setBounds(245,385, 35,40);	   // 设置位置及大小
+			jbtDel.setContentAreaFilled(false); 	 // 去除背景
+			jbtDel.setFocusPainted(false);			// 去除焦点框
+			jbtDel.setBorderPainted(false);			// 去除边框
+			jPTableSet.add(jbtDel);
+			jbtDel.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if(e.getSource()==jbtDel) {
+						SysClass.printLog("处理工单被按下！");
+						try {
+							DBUtil.runUpdate("UPDATE `test`.`back` SET '状态` = '1'，'处理人' = '"+ SysClass.SysData.uname +"' WHERE `back`.`id` = "+ intbDel.getText().trim() +"", SysClass.SysData.mainurl + "test" + SysClass.SysData.mainurladd);
+						} catch (SQLException e1) {
+							e1.printStackTrace();
+						}
+					}
+				}
+			});
+			
+			// 这是底图
+			JLabel bgd=new JLabel(new ImageIcon("src\\ImgPic\\SysTableGet_V1.png"));
+			jPTableSet.add(bgd);
+			bgd.setBounds(-50, 0, 725, 540);
 			
 			/*******************************************************************/
 			// 第五页
@@ -724,6 +994,8 @@ public class SysTeacher {
 			inpsubtitle.setBounds(28, 51, 525, 43);
 			jPTable.add(inpsubtitle);
 			
+			int[] id = { 0 };
+			
 			jbLogin.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -735,7 +1007,8 @@ public class SysTeacher {
 					}
 					else {
 						try {
-							DBUtil.runUpdate("INSERT INTO `test`.`back` (`uid`, `内容`, `状态`, `处理人`) VALUES (' " + SysClass.SysData.uid + " ', ' " + inTable.getText().trim() + " ', '0', '')", SysClass.SysData.mainurl + "test" + SysClass.SysData.mainurladd);
+							DBUtil.runUpdate("INSERT INTO `test`.`back` (`uid`,`id`, `内容`, `状态`, `处理人`) VALUES (' " + SysClass.SysData.uid + " ', '"+ (id[0]+1) +" ', ' " + inTable.getText().trim() + " ', '0', '')", SysClass.SysData.mainurl + "test" + SysClass.SysData.mainurladd);
+							id[0] += 1;
 							listTbThings.addElement(inTable.getText().trim());
 							listTbWho.addElement(" ");
 							listTbSt.addElement("未处理");
@@ -752,9 +1025,10 @@ public class SysTeacher {
 			 
 			try {
 				Statement stmt = SysClass.SysData.conn.createStatement();
-				ResultSet rs = stmt.executeQuery("SELECT * FROM Back");
+				ResultSet rs = stmt.executeQuery("SELECT * FROM Back;");
 				SysClass.printLog("正在初始化工单信息……");
 				while(rs.next()) {
+					id[0] = rs.getInt("id");
 					int uid = rs.getInt("uid");
 					String things = rs.getString("内容");
 					int stat = rs.getInt("状态");
@@ -819,15 +1093,17 @@ public class SysTeacher {
 	        });
 			 
 			// 这是底图
-			JLabel bgb=new JLabel(new ImageIcon("src\\ImgPic\\SysStuTable_V1.png"));
-			 jPTable.add(bgb);
-			bgb.setBounds(-50, 0, 725, 540);
+			JLabel bgc=new JLabel(new ImageIcon("src\\ImgPic\\SysStuTable_V1.png"));
+			 jPTable.add(bgc);
+			bgc.setBounds(-50, 0, 725, 540);
 			
 			/*******************************************************************/
 			// 添加进CardLayout
-			jPC.add("info", jPInfo);				// 第一页
+			jPC.add("info", jPInfo);					// 第一页
 			jPC.add("student", jPStudent);		// 第二页
-			jPC.add("table", jPTable);			// 第五页
+			jPC.add("score", jPScore);			// 第三页
+			jPC.add("tableget", jPTableSet);		// 第四页
+			jPC.add("table", jPTable);				// 第五页
 			
 			
 			/*******************************************************************/
