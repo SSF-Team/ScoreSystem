@@ -1,5 +1,3 @@
-# 此项目迁移至：[ChuHua](https://github.com/ChuHuai-Team)
-
 ~~~
 停止更新：因为实训已经结束了，这玩意将不会再次做任何更新改动。
 ~~~
